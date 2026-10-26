@@ -1,38 +1,249 @@
-body, h1, h2, h3, h4, h5, h6, p {
-    font-family: "cambria", Georgia, serif !important;
+:root {
+  --acadia-red: #8A3324;
+  --acadia-green: #4CBB17;
+  --acadia-dark: #000000;
+  --acadia-light: #E5E7E6;
+  --navbar-height: 80px;
 }
 
-body, html {
-  height: 100%;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+
+body {
+  font-family: "cambria", Cambria, Georgia, serif;
+  color: var(--acadia-);
+  line-height: 1.6;
+}
+
+.site-logo {
+  display: block;
+  width: 115px;
+  max-width: 30vw;
+  height: auto;
+  object-fit: contain;
+}
+
+.navbar.sticky-top {
+  z-index: 1030;
+}
+
+.navbar .nav-link {
+  color: var(--acadia-red);
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--acadia-green);
+}
+
+.navbar .nav-link.active {
+  font-weight: 700;
 }
 
 .hero-image {
-
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("road-sun-rays-path.jpeg");
-
-  height: 100%;
-  
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
   position: relative;
-
-}
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
   color: white;
-  opacity: 1.0;
-  
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background:
+    url("road-sun-rays-path.jpeg") center / cover no-repeat,
+    var(--acadia-dark);
 }
 
-.hero-text.active {
-    transform: translate(-50%, calc(-50% - 8px));
-    color: #4CBB17; 
-    text-shadow: 0 12px 16px rgba(0, 0, 0, 0.25);
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 25, 16, 0.52);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.hero-active-line {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.active-text {
+  display: inline-block;
+  color: white;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+}
+
+.active-text:hover,
+.active-text:focus-visible {
+  color: var(--acadia-light);
+}
+
+.active-arrow {
+  display: block;
+  font-size: 0.85em;
+  line-height: 1;
+  margin-top: 8px;
+  transition: transform 0.2s ease;
+}
+
+.active-text:hover .active-arrow,
+.active-text:focus-visible .active-arrow {
+  transform: translateY(3px);
+}
+
+.active-text:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Bootstrap Cards */
+.section-title {
+  color: var(--acadia-dark);
+  font-weight: 700;
+}
+
+.section-intro {
+  max-width: 650px;
+  color: #8A3324;
+}
+
+.feature-card {
+  padding: 1.5rem;
+  border: 1px solid var(--acadia-light);
+  border-radius: 0.75rem;
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1.5rem rgba(29, 48, 35, 0.1);
+}
+
+.feature-card h3 {
+  color: var(--acadia-dark);
+  font-weight: 700;
+}
+
+.feature-card a,
+.site-footer a {
+  color: var(--acadia-red);
+}
+
+.feature-card a:hover,
+.site-footer a:hover {
+  color: var(--acadia-green);
+}
+
+.coming-soon-hero {
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* background hero images*/
+.about-hero {
+  background-image: url("man-sitting-on-rocky\ cliff-overlooking-Yosemite-Valley.jpeg");
+}
+
+.products-hero {
+  background-image: url("Hiking_in_the_Talkeetna_Mountains_of_Alaska.jpeg");
+}
+
+.shop-hero {
+  background-image: url("alfred-boivin-XoM0eYSXWMs-unsplash.jpg");
+}
+
+/* Coming-soon text overlay */
+.coming-soon-hero .hero-overlay {
+  background: rgba(39, 39, 39, 0.257);
+}
+
+.coming-soon-hero .hero-text {
+  max-width: 900px;
+}
+
+.coming-soon-hero .hero-text h1 {
+  margin-bottom: 1rem;
+}
+
+.coming-soon-message {
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.coming-soon-hero .hero-text p:not(.hero-eyebrow) {
+  max-width: 680px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.coming-soon-hero .btn-acadia-light {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.site-footer {
+  background: var(--acadia-light);
+  color: var(--acadia-dark);
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 991.98px) {
+  .navbar form[role="search"] {
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-image {
+    padding: 4rem 0;
+  }
+
+  .hero-text h1 {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Motion changes */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
